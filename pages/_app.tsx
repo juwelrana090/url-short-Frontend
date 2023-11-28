@@ -4,9 +4,9 @@ import { ThemeProvider } from "next-themes";
 import NextNProgress from "nextjs-progressbar";
 function MyApp({ Component, pageProps, }: AppProps) {
   return (
-      <ThemeProvider enableSystem={true} attribute="class">
+    <ThemeProvider enableSystem={true} attribute="class">
         <NextNProgress
-          color="#099ADD"
+          color="#ab05f8"
           startPosition={0.3}
           stopDelayMs={300}
           height={3}

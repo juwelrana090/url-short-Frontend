@@ -12,8 +12,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { BsFillSunFill, BsMoonStarsFill } from "react-icons/bs";
+import UserProfileTop from "@/components/UserProfileTop";
 
-const Header = (): JSX.Element => {
+const Header = () => {
   const router = useRouter();
   const currentPath = router.asPath;
   const cookies = parseCookies();
@@ -21,17 +22,23 @@ const Header = (): JSX.Element => {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, [])
+
 
   const renderThemeMode = () => {
     if (!mounted) return null;
 
     const currentTheme = theme === "system" ? systemTheme : theme;
 
+    console.log('currentTheme', currentTheme)
+
     if (currentTheme === "dark") {
       return (
         <button className="flex items-center w-8 h-8 focus:outline-none">
           <BsFillSunFill
-            className="w-6 h-6 ml-1 text-yellow-400"
+            className="w-6 h-6 ml-1 text-gray-900"
             role="button"
             onClick={() => setTheme("light")}
           />
@@ -64,18 +71,8 @@ const Header = (): JSX.Element => {
         </span>
       </Link>
       <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2">
-        <Link
-          href={`${baseUrl}/login`}
-          className="w-[80px] h-[35px] p-1 text-base font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-        >
-          Login
-        </Link>
-        <Link
-          href={`${baseUrl}/register`}
-          className="w-[80px] h-[35px] p-1 font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-        >
-          Sign up
-        </Link>
+        <div className="mr-2">{renderThemeMode()}</div>
+        <UserProfileTop />
       </div>
     </div>
   </nav>);

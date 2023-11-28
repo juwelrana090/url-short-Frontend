@@ -10,6 +10,7 @@ interface InputProps {
   error?: any;
   readonly?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 /**
@@ -20,6 +21,7 @@ const InputText: React.FC<InputProps> = (props: InputProps) => {
     value = "",
     placeholder = "",
     onChange = () => null,
+    onBlur,
     name = "",
     required,
     disabled,
@@ -41,6 +43,7 @@ const InputText: React.FC<InputProps> = (props: InputProps) => {
       onChange={triggerOnChangeEvent}
       disabled={disabled}
       readOnly={readonly}
+      onBlur={onBlur}
     />
     {
       error?.length > 0 ? <p className="w-full mt-1 mb-1 text-red-500  text-base font-mono font-semibold antialiased">{error}</p> : null

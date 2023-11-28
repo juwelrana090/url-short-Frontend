@@ -6,6 +6,7 @@ interface InputProps {
   value?: string | number | readonly string[];
   error?: any;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 /**
@@ -16,6 +17,7 @@ const InputEmail: React.FC<InputProps> = (props: InputProps) => {
     value = "",
     placeholder = "",
     onChange = () => null,
+    onBlur,
     name = "",
     error,
   } = props;
@@ -31,6 +33,7 @@ const InputEmail: React.FC<InputProps> = (props: InputProps) => {
       placeholder={placeholder}
       name={name}
       onChange={triggerOnChangeEvent}
+      onBlur={onBlur}
     />
     {
       error?.length > 0 ? <p className="w-full mt-1 mb-1 text-red-500  text-base font-mono font-semibold antialiased">{error}</p> : null
