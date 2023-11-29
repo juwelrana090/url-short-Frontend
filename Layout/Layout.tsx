@@ -31,7 +31,7 @@ const Layout = ({ children }: Props): JSX.Element => {
       <ToastContainer />
       <div className="w-full" >
         <Header />
-        <div className="container mt-8 mx-auto px-2 min-h-[calc(100vh-138px)]">
+        <div className="container mt-8 mb-8 mx-auto px-2">
           {children}
         </div>
         <Footer />
